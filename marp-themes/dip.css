@@ -1,15 +1,18 @@
 @charset "UTF-8";
 /*!
- * Marp / Marpit Speee theme.
- * (based on gaia theme https://github.com/marp-team/marp-core/blob/3ae79e06953bb4baf26ded4c9e1c5154169d70a4/themes/gaia.scss )
  *
- * @theme speee
+ * @theme dip
  * @auto-scaling true
  * @size 16:9 1280px 720px
  * @size 4:3 960px 720px
  */
 @import url("https://fonts.googleapis.com/css2?family=Lato&family=Noto+Sans+JP&family=Roboto+Mono&display=swap");
 @import url("https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/tomorrow-night-blue.min.css");
+
+/* :root {
+  --fw: 1;
+} */
+
 svg[data-marp-fitting=svg] {
   max-height: 580px;
 }
@@ -159,20 +162,25 @@ footer {
   left: 0;
   right: 0;
   bottom: 0;
+  color: transparent!important;
 }
 
 section:not(.lead):before {
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  width: 100%;
-  height: 3%;
   content: "";
-  background: linear-gradient(90deg, #080058, #008bcd);
+  position: absolute;
+  background-repeat: no-repeat;
+  display: inline-block;
+  width: 750px;
+  height: 100%;
+  opacity: 0.1;
+  background-image: url('../marp-themes/Gomajor.png');
+  background-size: contain;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
 }
-
 section {
-  background-image: url("https://github.com/speee/marp-speee-theme/raw/main/marp-themes/Speee_VI_yokogumi.png");
+  background-image: url("../marp-themes/dip.png");
   background-repeat: no-repeat;
   background-position: 3% 97%;
   background-size: 9% auto, 100% 100%;
@@ -188,11 +196,12 @@ section {
   word-wrap: break-word;
   --color-background: white;
   --color-background-stripe: rgba(0, 57, 129, 0.1);
-  --color-foreground: #003981;
+  --color-foreground: #333333;
   --color-dimmed: #33619a;
   --color-highlight: #0288d1;
 }
 section::after {
+  content: attr(data-marpit-pagination) " / " attr(data-marpit-pagination-total);
   right: 0;
   bottom: 0;
   font-size: 80%;
@@ -241,11 +250,11 @@ section > header:first-child + * {
 }
 section.lead {
   --color-background: #003981;
-  --color-background-stripe: rgba(255, 255, 255, 0.1);
+  --color-background-stripe: rgba(234, 19, 19, 0.1);
   --color-foreground: white;
   --color-dimmed: #ccd7e6;
   --color-highlight: #81d4fa;
-  background-image: url("https://raw.githubusercontent.com/speee/marp-speee-theme/main/marp-themes/Speee_VI_yokogumi_white.png"), linear-gradient(115deg, #080058, #008bcd);
+  background-image: url("../marp-themes/dip_white.png"), linear-gradient(115deg, #ffd554, #ff0000);
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
@@ -291,4 +300,46 @@ section.lead table {
   margin-right: auto;
 }
 
-/*# sourceMappingURL=speee.css.map */
+footer::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 10px;
+  width: 100%;
+  background: linear-gradient(90deg, #ffd554, #ff0000);
+  z-index: 1;
+}
+
+section.lead footer::before {
+  display: none;
+}
+
+.flex{
+  display: flex;
+  gap: 1em;
+}
+.sa {
+  justify-content: space-around;
+  /* border: 8px dashed rgb(15, 166, 226);
+  background-color: rgb(222, 244, 255); */
+  margin-top: 1rem;
+}
+.sb {
+  justify-content: space-between;
+  /* border: 8px dashed rgb(21, 17, 255);
+  background-color: rgb(222, 244, 255); */
+  margin-top: 1rem;
+}
+.sa div,.sb div{
+  margin: 0.1em;
+  /* border: 8px dashed rgb(80, 177, 109);
+  background-color: rgb(227, 250, 237); */
+  margin-top: 1rem;
+}
+.fw div{
+  flex: var(--fw)!important;
+  background-color: rgb(244, 238, 255);
+  border: 8px dashed rgb(93, 0, 255);
+  margin-top: 1rem;
+}
